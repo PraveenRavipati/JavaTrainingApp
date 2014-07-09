@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Java Training 2014</title>
+    <script src="jquery-2.1.1.js"></script>
+    <script src="JQuery-Validation.js"></script>
+    <script src="underscore.js"></script>
+    <script src="backbone.js"></script>
+    <style type="text/css">
+        body{
+            background-color: #FCF7F2;
+            padding:0 100px 0 100px;
+        }
+        #header{
+            padding:3px;
+            background-color:#E3E6B5;
+            height:140px;
+            width:800px;
+
+        }
+        #header img{
+            margin-top:10px;
+            margin-left:100px;
+        }
+        #header p{
+            padding-top:0px;
+            padding-left:10px;
+            font-size:60px;
+            font-variant:small-caps;
+            font-style:Quattrocento Sans Bold;
+            display:inline;
+            color:#187EAD;
+        }
+        #header p span{
+            font-family:Gill Sans,sans-serif;
+            font-variant: normal;
+            color:#F5252F;
+            font-stretch: ultra-condensed;
+        }
+        #menu-container{
+            margin-top: 10px;
+            height: 50px;
+            width: 806px;
+            background-color: #187EAD;
+        }
+        #menu-container ul li{
+            display:inline-block;
+            font-size:27px;
+            font-family:comic sans ms;
+            padding-top:3px;
+            padding-right:70px;
+
+            color:#383D3D
+        }
+        #menu-container ul li a{
+            text-decoration:none;
+            color:#DEC945;
+        }
+        #menu-container ul li a:hover{
+            color:#8C7B11;
+        }
+        #body-container{
+            margin-top: 10px;
+            height: 650px;
+            width: 806px;
+            background-color: #E1F8FA;
+        }
+        #footer{
+            height: 35px;
+            width: 806px;
+            margin-top: 10px;
+            background-color: #187EAD;
+
+        }
+        #footer p{
+            padding-top: 6px;
+            color: #E3E6B5;
+        }
+        #loginLook{
+            padding: 100px 100px 100px 600px;
+        }
+        #loginLook span{
+            color: #5B7DE3;
+        }
+        #LoginSubmitbutton{
+            background-color: #E3E6B5;
+            height: 30px;
+            width: 100px;
+            border-radius: 2px;
+            border-color: #187EAD;
+            color: #6B6B60;
+        }
+        #loginLook #loginUser input{
+            height: 20px;
+            border-radius: 2px;
+        }
+        #loginLook #loginPwd input{
+            height: 20px;
+            border-radius: 2px;
+        }
+
+        #RegistrationLeftSlide{
+            padding-top: 100px;
+            padding-left: 150px;
+            display: inline-block;
+        }
+        #RegistrationRightSlide{
+            display: inline-block;
+            padding-left: 100px;
+
+        }
+
+        #RegistrationLeftSlide span{
+            color: #5B7DE3;
+
+        }
+        #RegistrationLeftSlide input{
+            height: 20px;
+            border-radius: 2px;
+        }
+        #RegistrationRightSlide input{
+            height: 20px;
+            border-radius: 2px;
+        }
+        #RegistrationRightSlide span{
+            color: #5B7DE3;
+        }
+        #RegistrationSubmit {
+            padding-top: 50px;
+            padding-left:350px;
+
+        }
+        #RegisterSubmit{
+            background-color: #E3E6B5;
+            height: 30px;
+            width: 100px;
+            border-radius: 2px;
+            border-color: #187EAD;
+            color: #6B6B60
+        }
+        #frame1{
+            float:left;
+            margin: 25px 300px 20px 50px;
+
+        }
+        #frame1 p{
+            font-size:20px
+        }
+        #frame2{
+            float: left;
+            margin: 10px 300px  10px 50px;
+
+        }
+        #frame2 p{
+            font-size:20px
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="header"><img class="img" src="http://blog.whitedoggreenfrog.com/wp-content/uploads/2013/01/xjava-logo.png.pagespeed.ic_.eoAavlF8iY.png" height="85px" width="60px"/><p> <span>Java</span> Training 2014</p>
+    </div>
+    <div id="menu-container">
+    </div>
+    <div id="body-container">Body
+    </div>
+    <div id="footer"><p>&copy; JavaTraining2014</p>
+    </div>
+
+
+    <!-------------Templates--------------------->
+
+    <!--------------Menu Template---------------->
+
+    <script type="text/template" id="menuTemplate">
+        <a href=<%=hyper%>><span><%=name%></span></a>
+    </script>
+
+
+
+    <!-----------Home Home Page Template-------->
+
+    <script type="text/template" id="home_homeTemplate">
+        <div id="frame1">
+            <img src="nodejs.png">
+            <p>Node.js is getting ready for its next stable release and it’s a major milestone for the platform and community. We’re reaching out through local groups to share production user stories. From scaling projects to building better teams, the goal is to help you connect, contribute and pave the road ahead.</p>
+        </div>
+        <div id="frame2"><img src="backbone_logo.png" height="100">
+            <p>Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.</p></div>
+
+    </script>
+
+
+
+    <!-----------Home Login Template------------>
+
+    <script type="text/template" id="home_Login_template">
+        <form method="post">
+            <div id="loginLook">
+                <div id="loginUser">
+                    <strong><span><label>UserName</label></span></strong>:<input type="text" name="uname"/><br/>
+                </div>
+                <div id="loginPwd">
+                    <strong><span><label>Password</label></span></strong>:<input type="password" name="pwd"/>
+                </div>
+                <div id="loginSubmit">
+                    <br/>
+                    <input type="submit" value="Login" id="LoginSubmitbutton"/>
+                </div>
+            </div>
+        </form>
+    </script>
+
+
+
+    <!--------Home Register Template------------>
+    <script type="text/template" id="home_Register_template">
+        <form method="post" id="home_Registration_Page">
+            <div id="RegistrationLeftSlide">
+                <div><span>Name</span>:</div><div><input type="text" name="Name" id="RegName"/></div>
+                <div><span>Mail id</span>:</div><div><input type="text" name="Mail" id="RegMail"/></div>
+                <div><span>Exten No</span>:</div><div><input type="text" name="Exten" id="RegExten"/></div>
+                <div><span>Mobile</span>:</div><div><input type="text" name="Mobile" id="RegMobile"/></div>
+            </div>
+            <div id="RegistrationRightSlide">
+                <div><span>Git Hub</span>:</div><div><input type="text" name="GitHub" id="RegGit"/></div>
+                <div><span>UserName</span>:</div><div><input type="text" name="UserName" id="RegUname"/></div>
+                <div><span>Password</span>:</div><div><input type="text" name="Pwd" id="RegPwd"/></div>
+                <div><span>Confirm Password</span>:</div><div><input type="text" name="ConPwd" id="RegConfim"/></div>
+            </div>
+            <div id="RegistrationSubmit">
+                <div><input type="submit" value="Register" id="RegisterSubmit"></div>
+            </div>
+        </form>
+
+    </script>
+
+
+
+<script type="text/javascript">
+
+    //-----------Validation----------------
+
+
+
+
+
+    /*$('#home_Registration_Page').validate({
+        rules:{
+            Name:"required",
+            Mail:{
+                required:true,
+                email:true
+            },
+            Exten:{
+                required:true,
+                minlength:6
+            },
+            Mobile:{
+                required:true,
+                minlength:10
+            },
+            uName:{
+                required:true,
+                minlength:6
+            }
+            Pwd:{
+                required:
+            }
+
+        }
+    });
+*/
+
+
+    //--------------template Helper--------
+
+    var template=function(id){
+        return $('#'+id).html();
+    }
+
+
+    //-------------models-----------------
+
+
+    MenuModel=Backbone.Model.extend({
+        defaults:{
+            name:"Menu",
+            hyper:"#"
+        },
+        initialize:function(){
+            console.log("Menu Created");
+        }
+    });
+
+    //-------------Collection-------------
+
+
+    Menu=Backbone.Collection.extend({
+        model:MenuModel
+    });
+
+    //-------------Menu View--------------
+
+
+    MenuModelView=Backbone.View.extend({
+        tagName:'li',
+        /*events:{
+          'click':'showAlert'
+        },*/
+        template: _.template( template('menuTemplate')),
+        initialize:function(){
+            console.log("Here I am");
+            this.render();
+        },
+        render:function(){
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
+       /* showAlert:function(e){
+            //e.preventDefault();
+            alert("you clicked me !  "+this.model.get('hyper'));
+            console.log(this.model.get('hyper'));
+        }*/
+    });
+
+    MenuView =Backbone.View.extend({
+        tagName:"ul",
+        initialize:function(){
+            //console.log(this.collection.each);
+
+        },
+        render:function(){
+            console.log(this);
+            this.collection.each(function(menuModel){
+
+                  var menuModelView=new MenuModelView({model:menuModel});
+                console.log(menuModelView.el);
+                this.$el.append(menuModelView.render().el);
+                //console.log(menuModel.toJSON());
+            },this);
+            return this;
+        }
+    });
+
+    //----------------Routers-----------------
+
+    Routers=Backbone.Router.extend({
+        routes:{
+            "":"HomeHomePage",
+            "Home_home":"HomeHomePage",
+            "Home_Login":"HomeLoginPage",
+            "Home_Register":"HomeRegisterPage",
+            "Home_Contact":"HomeContactPage",
+            "Home_Site":"HomeSiteHelpPage"
+
+        },
+
+        HomeHomePage:function(){
+            $("#body-container").html("");
+            var template= _.template($('#home_homeTemplate').html(),{});
+            $("#body-container").html(template);
+        },
+
+        HomeLoginPage:function(){
+
+            console.log("im in HomeLoginPage");
+
+            $("#body-container").html("");
+            var template= _.template($('#home_Login_template').html(),{});
+            $("#body-container").html(template);
+        },
+        HomeRegisterPage:function(){
+            console.log("im in HomeRegisterPage");
+            $("#body-container").html("");
+            var template= _.template($('#home_Register_template').html(),{});
+            $("#body-container").html(template);
+        },
+        HomeContactPage:function(){
+            $("#body-container").html("");
+        },
+        HomeSiteHelpPage:function(){
+            $("#body-container").html("");
+        }
+
+    });
+
+    var MyRouter=new Routers();
+
+    Backbone.history.start();
+
+
+
+    //----------------Declarations------------
+
+        //---------Home Menu-----------
+    var Home_menu =new Menu([
+        {
+            name:"Home",
+            hyper:"#Home_home"
+        },
+        {
+            name:"Login",
+            hyper:"#Home_Login"
+        },
+        {
+            name:"Register",
+            hyper:"#Home_Register"
+        },
+        {
+            name:"Contact",
+            hyper:"#Home_Contact"
+        },
+        {
+            name:"Site Help",
+            hyper:"#Home_Site"
+        }
+
+    ]);
+
+        //---------Trainee Menu----------
+    var Trainee_menu=new Menu([
+        {
+            name:"Home",
+            hyper:"#Trainee_home"
+        },
+        {
+            name:"Profile",
+            hyper:"#Trainee_profile"
+        },
+        {
+            name:"Today",
+            hyper:"#Trainee_todays"
+        },
+        {
+            name:"Books",
+            hyper:"#Trainee_books"
+        },
+        {
+            name:"Logout",
+            hyper:"#Trainee_logout"
+        }
+    ]);
+
+        //---------Trainer Menu----------
+    var Trainer_nenu=new Menu([
+        {
+            name:"Home",
+            hyper:"#Trainer_home"
+        },
+        {
+            name:"Profile",
+            hyper:"#Trainer_profile"
+        },
+        {
+            name:"Add Link",
+            hyper:"#Trainer_AddLink"
+        },
+        {
+            name:"View",
+            hyper:"#Trainer_View"
+        },
+        {
+            name:"Logout",
+            hyper:"#Trainer_Logout"
+        }
+    ]);
+    //var home_HomeMenu=new MenuModel({name:"Home",hyper:"home.html"});
+
+    var menuView=new MenuView({collection:Home_menu});
+
+    //$(document.body).html(menuView.render().el);
+    //var menuModelView=new MenuModelView({model:home_HomeMenu});
+
+    $('#menu-container').html(menuView.render().el);
+
+
+
+</script>
+</body>
+</html>
